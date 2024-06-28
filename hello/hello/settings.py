@@ -14,6 +14,11 @@ from pathlib import Path
 # added by me
 from decouple import config
 
+# follow the CORS example
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -32,6 +37,11 @@ DEBUG = config("DEBUG", default=True)
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="").split(",")
 
+# Following the cors example
+CSRF_TRUSTED_ORIGINS = ['https://*.azurewebsites.net','http://localhost:8000']
+CORS_ALLOW_ALL_ORIGINS: True
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,9 +54,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_browser_reload',
+    # following cors example
+    'rest_framework',
+    'corsheaders',
 ]
 
+# Following the cors example
+CORS_ORIGIN_ALLOW_ALL = True
+
+
 MIDDLEWARE = [
+    # following the cors example
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
