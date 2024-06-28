@@ -11,6 +11,8 @@ gunicorn --bind=0.0.0.0 --timeout 600 --workers=4 --chdir <module_path> <module>
 gunicorn --bind=0.0.0.0 --timeout 600 --workers=4 --chdir hello hello.wsgi
 ```
 
+![startup command](notes/startup_command.png)
+
 ## ALLOWED_HOSTS warning
 
 Ignore warning like that shown below. Actually when this warning is showing, it means the app deployment is running successfully.
