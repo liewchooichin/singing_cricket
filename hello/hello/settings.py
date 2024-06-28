@@ -22,13 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5%\-r#@4-(j=g8m*m^7e6wi*vs7vb+7^@al82tezhpzme1##f80'
+#SECRET_KEY = 'django-insecure-5%\-r#@4-(j=g8m*m^7e6wi*vs7vb+7^@al82tezhpzme1##f80'
+SECRET_KEY = config("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = config("DEBUG", default=True)
 
-ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="").split(",")
 
 # Application definition
 
@@ -80,8 +82,15 @@ WSGI_APPLICATION = 'hello.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql',
+        'NAME': config("SQL_NAME", ""),
+        'HOST': config("SQL_SERVER", ""),
+        'PORT': '1433',
+        'USER': config("SQL_USER",""),
+        'PASSWORD': config("SQL_PASSWORD",""),
+        'OPTIONS': {
+	            'driver': 'ODBC Driver 18 for SQL Server',
+	        },
     }
 }
 
