@@ -110,11 +110,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# Added by me
+#TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kuala_Lumpur'
 
 USE_I18N = True
 
-USE_TZ = True
+# Added by me.
+# USE_TZ = False when using Azure SQL
+#USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
