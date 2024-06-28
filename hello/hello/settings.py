@@ -114,6 +114,7 @@ DATABASES = {
 	            'driver': 'ODBC Driver 18 for SQL Server',
                 'timeout': 120,
 	        },
+        'CONN_HEALTH_CHECKS': True,
     }
 }
 
