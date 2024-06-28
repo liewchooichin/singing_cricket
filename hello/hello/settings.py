@@ -35,6 +35,8 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="").split(",")
 # Application definition
 
 INSTALLED_APPS = [
+    # added by me, follow the configuration guide in microsoft
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
